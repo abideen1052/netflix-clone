@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SearchTextTitle extends StatelessWidget {
+class MainTitle extends StatelessWidget {
   final String title;
-  const SearchTextTitle({
+  const MainTitle({
     Key? key,
     required this.title,
   }) : super(key: key);
@@ -12,7 +12,7 @@ class SearchTextTitle extends StatelessWidget {
     return Text(
       title,
       style: const TextStyle(
-        fontSize: 22,
+        fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
     );

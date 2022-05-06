@@ -3,7 +3,7 @@ import 'package:netflix_clone/core/constatnts/constant.dart';
 import 'package:netflix_clone/presentation/search/widgets/title.dart';
 
 const imageUrl =
-    "https://www.themoviedb.org/t/p/w220_and_h330_face/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg";
+    "https://image.tmdb.org/t/p/original/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg";
 
 class SearchResultWidget extends StatelessWidget {
   const SearchResultWidget({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class SearchResultWidget extends StatelessWidget {
             children: List.generate(
               20,
               (index) {
-                return MainCard();
+                return const MainCard();
               },
             ),
           ),
@@ -42,7 +42,8 @@ class MainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          image: DecorationImage(
+          color: Colors.grey.withOpacity(0.2),
+          image: const DecorationImage(
             image: NetworkImage(imageUrl),
             fit: BoxFit.cover,
           ),

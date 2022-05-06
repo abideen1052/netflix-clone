@@ -5,7 +5,7 @@ import 'package:netflix_clone/core/constatnts/constant.dart';
 import 'package:netflix_clone/presentation/search/widgets/title.dart';
 
 const imageUrl =
-    "https://www.themoviedb.org/t/p/w250_and_h141_face/5OeY4U2rzePxWq2rkqMajUx2gz7.jpg";
+    "https://image.tmdb.org/t/p/original/5OeY4U2rzePxWq2rkqMajUx2gz7.jpg";
 
 class SearchIdleWidget extends StatelessWidget {
   const SearchIdleWidget({Key? key}) : super(key: key);
@@ -45,8 +45,9 @@ class TopSearchItemTile extends StatelessWidget {
         Container(
           width: screenWidth * 0.35,
           height: 75,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
+          decoration: BoxDecoration(
+            color: Colors.grey.withOpacity(0.2),
+            image: const DecorationImage(
               image: NetworkImage(
                 imageUrl,
               ),

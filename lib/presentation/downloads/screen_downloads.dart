@@ -42,9 +42,9 @@ class ScreenDownloads extends StatelessWidget {
 class Section2 extends StatelessWidget {
   Section2({Key? key}) : super(key: key);
   final List imageList = [
-    "http://image.tmdb.org/t/p/w154/74xTEgt7R36Fpooo50r9T25onhq.jpg",
-    "http://image.tmdb.org/t/p/w154/okNgwtxIWzGsNlR3GsOS0i0Qgbn.jpg",
-    "http://image.tmdb.org/t/p/w154/zQSABH2Dza4mXLow2f0V2IQvJOL.jpg"
+    "https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg",
+    "https://image.tmdb.org/t/p/original/okNgwtxIWzGsNlR3GsOS0i0Qgbn.jpg",
+    "https://image.tmdb.org/t/p/original/zQSABH2Dza4mXLow2f0V2IQvJOL.jpg"
   ];
 
   @override
