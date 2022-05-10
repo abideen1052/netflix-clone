@@ -61,7 +61,7 @@ class Section2 extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        kHight,
+        kHeight,
         const Text(
           "We will download a personalised selection of\nmovies and shows for you,so there's\nalways something to watch on your\ndevice",
           textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class Section2 extends StatelessWidget {
             //fontWeight: FontWeight.bold,
           ),
         ),
-        kHight,
+        kHeight,
         SizedBox(
           width: size.width,
           height: size.height,
@@ -136,7 +136,7 @@ class Section3 extends StatelessWidget {
             ),
           ),
         ),
-        kHight,
+        kHeight,
         MaterialButton(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(6),

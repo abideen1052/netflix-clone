@@ -44,6 +44,7 @@ class NumberCard extends StatelessWidget {
               "${index + 1}",
               style: const TextStyle(
                 fontSize: 120,
+                letterSpacing: -18,
                 color: Colors.black,
               ),
             ),

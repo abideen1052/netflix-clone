@@ -18,7 +18,7 @@ class NumberTitleCard extends StatelessWidget {
           const MainTitle(
             title: 'Top 10 shows in India',
           ),
-          kHight,
+          kHeight,
           LimitedBox(
             maxHeight: 170,
             child: ListView(

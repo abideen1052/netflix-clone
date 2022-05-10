@@ -5,10 +5,14 @@ import '../../../core/colors/colors.dart';
 class CustomButtonWidget extends StatelessWidget {
   final IconData icon;
   final String title;
+  final double iconSize;
+  final double textSize;
   const CustomButtonWidget({
     Key? key,
     required this.icon,
     required this.title,
+    this.iconSize = 28,
+    this.textSize = 18,
   }) : super(key: key);
 
   @override
@@ -18,12 +22,14 @@ class CustomButtonWidget extends StatelessWidget {
         Icon(
           icon,
           color: kWhiteColor,
-          size: 28,
+          size: iconSize,
         ),
         Text(
           title,
-          style: const TextStyle(
-              color: kWhiteColor, fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: kWhiteColor,
+              fontSize: textSize,
+              fontWeight: FontWeight.bold),
         )
       ],
     );

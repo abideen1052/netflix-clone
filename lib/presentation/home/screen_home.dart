@@ -20,7 +20,7 @@ class ScreenHome extends StatelessWidget {
         return NotificationListener<UserScrollNotification>(
           onNotification: (notification) {
             final ScrollDirection direction = notification.direction;
-            print(direction);
+
             if (direction == ScrollDirection.reverse) {
               scrollNotifier.value = false;
             } else if (direction == ScrollDirection.forward) {
@@ -33,16 +33,17 @@ class ScreenHome extends StatelessWidget {
               ListView(
                 children: const [
                   BackgroundCard(),
+                  kHeight,
                   MainTitleTileWidget(title: "Released in the past Year"),
-                  kHight,
+                  kHeight,
                   MainTitleTileWidget(title: "Trending Now"),
-                  kHight,
+                  kHeight,
                   NumberTitleCard(),
-                  kHight,
+                  kHeight,
                   MainTitleTileWidget(title: "Tense Dramas"),
-                  kHight,
+                  kHeight,
                   MainTitleTileWidget(title: "South Indian Cinema"),
-                  kHight
+                  kHeight
                 ],
               ),
               scrollNotifier.value == true
@@ -92,7 +93,7 @@ class ScreenHome extends StatelessWidget {
                         ],
                       ),
                     )
-                  : kHight,
+                  : kHeight,
             ],
           ),
         );
