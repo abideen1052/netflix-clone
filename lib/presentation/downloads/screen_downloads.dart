@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/downloads/downloads_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constatnts/constant.dart';
 import 'package:netflix_clone/presentation/widgets/app_bar_widget.dart';
@@ -41,15 +43,15 @@ class ScreenDownloads extends StatelessWidget {
 
 class Section2 extends StatelessWidget {
   Section2({Key? key}) : super(key: key);
-  final List imageList = [
-    "https://image.tmdb.org/t/p/original/74xTEgt7R36Fpooo50r9T25onhq.jpg",
-    "https://image.tmdb.org/t/p/original/okNgwtxIWzGsNlR3GsOS0i0Qgbn.jpg",
-    "https://image.tmdb.org/t/p/original/zQSABH2Dza4mXLow2f0V2IQvJOL.jpg"
-  ];
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(const DownloadsEvent.getDownloadsImage());
+    });
     final Size size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         const Text(
@@ -72,36 +74,45 @@ class Section2 extends StatelessWidget {
           ),
         ),
         kHeight,
-        SizedBox(
-          width: size.width,
-          height: size.height,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              CircleAvatar(
-                radius: size.width * 0.39,
-                backgroundColor: Colors.grey.withOpacity(0.5),
-              ),
-              DowloadsImageWidget(
-                imageList: imageList[0],
-                margin: const EdgeInsets.only(left: 150, bottom: 50),
-                angle: 20,
-                size: Size(size.width * 0.35, size.width * 0.52),
-              ),
-              DowloadsImageWidget(
-                imageList: imageList[1],
-                margin: const EdgeInsets.only(right: 150, bottom: 50),
-                angle: -20,
-                size: Size(size.width * 0.35, size.width * 0.52),
-              ),
-              DowloadsImageWidget(
-                imageList: imageList[2],
-                margin: const EdgeInsets.only(right: 0),
-                size: Size(size.width * 0.40, size.width * 0.61),
-                radius: 10,
-              ),
-            ],
-          ),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return SizedBox(
+              width: size.width,
+              height: size.height,
+              child: state.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: size.width * 0.39,
+                          backgroundColor: Colors.grey.withOpacity(0.5),
+                        ),
+                        DowloadsImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[0].posterPath}',
+                          margin: const EdgeInsets.only(left: 150, bottom: 50),
+                          angle: 20,
+                          size: Size(size.width * 0.35, size.width * 0.52),
+                        ),
+                        DowloadsImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
+                          margin: const EdgeInsets.only(right: 150, bottom: 50),
+                          angle: -20,
+                          size: Size(size.width * 0.35, size.width * 0.52),
+                        ),
+                        DowloadsImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
+                          margin: const EdgeInsets.only(right: 0),
+                          size: Size(size.width * 0.40, size.width * 0.61),
+                          radius: 10,
+                        ),
+                      ],
+                    ),
+            );
+          },
         ),
       ],
     );
