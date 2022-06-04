@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/presentation/new_and_hot/widgets/video_widget.dart';
 
-import '../../../core/colors/colors.dart';
 import '../../../core/constatnts/constant.dart';
 import '../../home/widgets/custom_button.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String description;
+
   const ComingSoonWidget({
     Key? key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -20,17 +32,17 @@ class ComingSoonWidget extends StatelessWidget {
           height: 450,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               Text(
-                'FEB',
-                style: TextStyle(
+                month,
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.grey,
                 ),
               ),
               Text(
-                '11',
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     letterSpacing: -2),
@@ -44,28 +56,31 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VideoWidget(),
+              VideoWidget(url: posterPath),
               kHeight,
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Doctor Strange',
-                    style: TextStyle(
-                      letterSpacing: -2,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
+                children: [
+                  Expanded(
+                    child: Text(
+                      movieName,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                  Spacer(),
-                  CustomButtonWidget(
+                  //const Spacer(),
+                  const CustomButtonWidget(
                     icon: Icons.alarm,
                     title: "Remind Me",
                     iconSize: 19,
                     textSize: 14,
                   ),
                   kWidth,
-                  CustomButtonWidget(
+                  const CustomButtonWidget(
                     icon: Icons.info,
                     title: 'Info',
                     iconSize: 19,
@@ -74,16 +89,20 @@ class ComingSoonWidget extends StatelessWidget {
                   kWidth
                 ],
               ),
-              const Text('Coming on Friday'),
+              Text('Coming on $month $day'),
               kHeight20,
-              const Text(
-                'Doctor Strange',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              Text(
+                movieName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style:
+                    const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
               kHeight,
-              const Text(
-                'Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.',
-                style: TextStyle(
+              Text(
+                description,
+                maxLines: 4,
+                style: const TextStyle(
                   color: Colors.grey,
                 ),
               )

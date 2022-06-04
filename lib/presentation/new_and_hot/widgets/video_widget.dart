@@ -3,22 +3,41 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/colors.dart';
 
 class VideoWidget extends StatelessWidget {
+  final String url;
   const VideoWidget({
     Key? key,
+    required this.url,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const SizedBox(
+        SizedBox(
           width: double.infinity,
           height: 210,
           child: Image(
             image: NetworkImage(
-              'https://www.themoviedb.org/t/p/w533_and_h300_bestv2/ndCSoasjIZAMMDIuMxuGnNWu4DU.jpg',
+              url,
             ),
             fit: BoxFit.cover,
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progress) {
+              if (progress == null) {
+                return child;
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  ),
+                );
+              }
+            },
+            errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
+              return const Center(
+                child: Icon(Icons.wifi),
+              );
+            },
           ),
         ),
         Positioned(

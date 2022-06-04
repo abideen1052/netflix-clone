@@ -4,9 +4,15 @@ import 'package:netflix_clone/presentation/new_and_hot/widgets/video_widget.dart
 import '../../../core/constatnts/constant.dart';
 import '../../home/widgets/custom_button.dart';
 
-class EveyonesWatchingWidget extends StatelessWidget {
-  const EveyonesWatchingWidget({
+class EveryonesWatchingWidget extends StatelessWidget {
+  final String posterPath;
+  final String movieName;
+  final String description;
+  const EveryonesWatchingWidget({
     Key? key,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
   }) : super(key: key);
 
   @override
@@ -15,19 +21,25 @@ class EveyonesWatchingWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kHeight,
-        const Text(
-          'Uncharted',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        Text(
+          movieName,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
         ),
         kHeight,
-        const Text(
-          'A young street-smart, Nathan Drake and his wisecracking partner Victor “Sully” Sullivan embark on a dangerous pursuit of “the greatest treasure never found” while also tracking clues that may lead to Nathan’s long-lost brother.',
-          style: TextStyle(
+        Text(
+          description,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
             color: Colors.grey,
           ),
         ),
         kHeight50,
-        const VideoWidget(),
+        VideoWidget(
+          url: posterPath,
+        ),
         kHeight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
