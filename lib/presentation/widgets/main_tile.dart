@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/constatnts/constant.dart';
 
 class MainTile extends StatelessWidget {
+  final String imageUrl;
   const MainTile({
     Key? key,
+    required this.imageUrl,
   }) : super(key: key);
 
   @override
@@ -16,10 +18,9 @@ class MainTile extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: kRadius10,
           color: Colors.grey.withOpacity(0.2),
-          image: const DecorationImage(
+          image: DecorationImage(
             fit: BoxFit.cover,
-            image: NetworkImage(
-                'http://image.tmdb.org/t/p/w154/rjkmN1dniUHVYAtwuV3Tji7FsDO.jpg'),
+            image: NetworkImage(imageUrl),
           ),
         ),
       ),

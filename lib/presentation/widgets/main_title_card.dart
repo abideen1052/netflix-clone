@@ -4,7 +4,12 @@ import 'package:netflix_clone/presentation/widgets/main_title.dart';
 
 class MainTitleTileWidget extends StatelessWidget {
   final String title;
-  const MainTitleTileWidget({Key? key, required this.title}) : super(key: key);
+  final List<String> posterList;
+  const MainTitleTileWidget({
+    Key? key,
+    required this.title,
+    required this.posterList,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +25,10 @@ class MainTitleTileWidget extends StatelessWidget {
             maxHeight: 170,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              children: List.generate(10, (index) {
-                return const MainTile();
+              children: List.generate(posterList.length, (index) {
+                return MainTile(
+                  imageUrl: posterList[index],
+                );
               }),
             ),
           )

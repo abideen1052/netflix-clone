@@ -4,8 +4,10 @@ import '../../widgets/main_title.dart';
 import 'number_card.dart';
 
 class NumberTitleCard extends StatelessWidget {
+  final List<String> posterPath;
   const NumberTitleCard({
     Key? key,
+    required this.posterPath,
   }) : super(key: key);
 
   @override
@@ -26,6 +28,7 @@ class NumberTitleCard extends StatelessWidget {
               children: List.generate(10, (index) {
                 return NumberCard(
                   index: index,
+                  imgUrl: posterPath[index],
                 );
               }),
             ),

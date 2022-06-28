@@ -4,8 +4,10 @@ import '../../../core/constatnts/constant.dart';
 
 class NumberCard extends StatelessWidget {
   final int index;
+  final String imgUrl;
   const NumberCard({
     Key? key,
+    required this.imgUrl,
     required this.index,
   }) : super(key: key);
 
@@ -25,10 +27,11 @@ class NumberCard extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: kRadius10,
                 color: Colors.grey.withOpacity(0.2),
-                image: const DecorationImage(
+                image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(
-                      'http://image.tmdb.org/t/p/w154/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg'),
+                    imgUrl,
+                  ),
                 ),
               ),
             ),

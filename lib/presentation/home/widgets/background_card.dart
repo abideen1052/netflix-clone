@@ -3,7 +3,9 @@ import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/presentation/home/widgets/custom_button.dart';
 
 class BackgroundCard extends StatelessWidget {
-  const BackgroundCard({Key? key}) : super(key: key);
+  const BackgroundCard({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
