@@ -1,6 +1,7 @@
 # netflix_clone
-
-A new Flutter project.
+Clone of Netflix application using Flutter,Bloc,Freezed.
+Also TMDB api integrated.
+Done for studying purpose.
 
 ## Getting Started
 
